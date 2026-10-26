@@ -23,8 +23,7 @@
   ];
 
   const grid = document.querySelector('[data-project-grid]');
-  const emptyState = document.querySelector('[data-project-empty]');
-  if (!grid || !emptyState) return;
+  if (!grid) return;
 
   const imageFolder = 'assets/projects/images/';
   const pdfFolder = 'assets/projects/pdfs/';
@@ -57,5 +56,4 @@
     grid.append(card);
   });
 
-  emptyState.hidden = projects.length > 0;
 })();
