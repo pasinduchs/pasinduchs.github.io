@@ -152,10 +152,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 42px; }
 .section-heading h2, .services-heading h2, .home-about h2, .about-copy h2, .contact-information h2 { margin: 0; font-family: var(--display); font-size: clamp(30px, 3vw, 38px); font-weight: 700; line-height: 1.18; letter-spacing: -.03em; }
 .section-intro { max-width: 420px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
-.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-.feature-card { display: grid; min-height: 270px; grid-template-columns: .9fr 1.1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--card-bg); box-shadow: var(--shadow); transition: border-color .25s, transform .25s, box-shadow .25s; }
+.feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.feature-card { display: grid; min-width: 0; min-height: 100%; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--card-bg); box-shadow: var(--shadow); transition: border-color .25s, transform .25s, box-shadow .25s; }
 .feature-card:hover { transform: translateY(-3px); border-color: rgba(217, 173, 40, .35); box-shadow: 0 22px 46px rgba(0, 0, 0, .28), 0 0 32px rgba(217, 173, 40, .045); }
-.feature-project-image { display: block; width: 100%; height: 100%; min-height: 250px; object-fit: cover; object-position: center; background: var(--panel); }
+.feature-project-image { display: block; width: 100%; height: auto; min-height: 0; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; background: var(--panel); }
 .drawing, .project-art { position: relative; min-height: 250px; overflow: hidden; border-right: 1px solid var(--line); background: var(--illustration-bg); }
 .drawing::before, .project-art::before { position: absolute; inset: 18% 14%; border: 1px solid rgba(232, 201, 107, .42); content: ''; transform: skewY(-8deg); }
 .drawing span, .project-art span { position: absolute; display: block; background: var(--drawing-line); }
@@ -168,10 +168,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .drawing-volume span:nth-child(2), .project-art span:nth-child(2) { top: 62%; left: 25%; width: 52%; height: 1px; transform: rotate(-28deg); }
 .drawing-volume i, .art-elevation i { position: absolute; top: 27%; left: 29%; width: 44%; height: 42%; border: 1px solid rgba(217, 222, 229, .75); transform: skewY(-28deg); }
 .drawing-volume b, .art-elevation b { position: absolute; top: 23%; left: 41%; width: 30%; height: 44%; border-left: 1px solid var(--gold); transform: skewY(-28deg); }
-.card-copy { align-self: center; padding: clamp(24px, 3vw, 36px); }
+.card-copy { align-self: stretch; padding: 21px; }
+.card-copy .card-link { margin-top: 16px; font-size: 14px; }
 .card-kicker { margin: 0 0 10px; color: var(--gold-soft); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .card-copy h3, .project-copy h3 { margin: 0 0 8px; font-family: var(--display); font-size: clamp(21px, 1.65vw, 24px); font-weight: 600; line-height: 1.35; }
 .card-copy > p:not(.card-kicker), .project-copy > p:not(.card-kicker) { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+.feature-card .card-copy h3 { font-size: clamp(17px, 1.3vw, 20px); }
+.feature-card .card-copy > p:not(.card-kicker) { font-size: 14px; line-height: 1.65; }
 .card-link { display: inline-block; margin-top: 22px; color: var(--text); font-size: 15px; font-weight: 600; }
 .feature-card:hover .card-link { color: var(--gold-soft); }
 .home-about-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12%; }
@@ -219,11 +222,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .services-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 34px; }
 .services-heading h2 { max-width: 560px; }
 .service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.service-card { min-width: 0; min-height: 220px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: transform .22s, border-color .22s, box-shadow .22s; }
+.service-card { display: flex; min-width: 0; min-height: 260px; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: transform .22s, border-color .22s, box-shadow .22s; }
 .service-card:hover { transform: translateY(-3px); border-color: rgba(181, 139, 85, .55); box-shadow: var(--shadow), 0 12px 28px rgba(181, 139, 85, .08); }
 .service-index { color: var(--gold-soft); font-size: 12px; font-weight: 600; letter-spacing: .12em; }
 .service-card h3 { margin: 17px 0 9px; font-family: var(--display); font-size: clamp(20px, 1.8vw, 23px); font-weight: 600; line-height: 1.35; }
 .service-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.service-deliverable { margin-top: auto; padding-top: 18px; }
+.service-deliverable > span { color: var(--gold-soft); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.service-card .service-deliverable p { margin-top: 5px; color: var(--text); font-size: 14px; line-height: 1.6; }
+.service-outputs { margin-top: 46px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--soft-band); }
+.service-outputs-heading { margin-bottom: 20px; }
+.service-outputs-heading .eyebrow { margin: 0 0 8px; }
+.service-outputs-heading h2 { margin: 0; font-family: var(--display); font-size: clamp(25px, 2.5vw, 32px); font-weight: 700; line-height: 1.2; letter-spacing: -.025em; }
+.service-outputs-heading h2 em { color: var(--gold-soft); font-style: normal; font-weight: 600; }
+.service-output-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.service-output-grid li { display: flex; min-height: 68px; align-items: center; padding: 13px; border: 1px solid var(--line); border-radius: 12px; color: var(--text); background: var(--card-bg); font-size: 13px; font-weight: 500; line-height: 1.5; }
 .service-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 32px; padding-top: 25px; border-top: 1px solid var(--line); }
 .service-cta p { margin: 0; color: var(--text); font-family: var(--display); font-size: 20px; font-weight: 600; }
 .scope-band { padding: 32px 0; border-block: 1px solid var(--line); background: var(--soft-band); }
@@ -335,6 +348,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .page-lead, .section-intro { font-size: 15px; }
   .body-copy { font-size: 15px; }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
   .home-about-inner, .contact-layout { grid-template-columns: 1fr; gap: 35px; }
   .about-article { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .about-copy-intro, .profile-frame, .about-copy-middle, .about-certificate-section, .about-actions { grid-column: 1; grid-row: auto; }
@@ -377,6 +391,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .services-heading { align-items: flex-start; flex-direction: column; gap: 15px; margin-bottom: 25px; }
   .service-grid { grid-template-columns: 1fr; gap: 14px; }
   .service-card { min-height: 0; padding: 22px; }
+  .service-outputs { margin-top: 30px; padding: 22px; }
+  .service-output-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-cta { align-items: flex-start; flex-direction: column; margin-top: 24px; }
   .feature-grid { grid-template-columns: 1fr; }
   .feature-card { grid-template-columns: 1fr; min-height: 0; }

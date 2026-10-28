@@ -11,24 +11,30 @@
 (() => {
   const projects = [
     {
-      title: 'DESIGN-02',
+      title: 'PROJ-03 | MULTI-LEVEL RESIDENCE',
+      description: 'Full Revit 2025 BIM documentation package featuring multi-level floor plans, schematic foundation sections, site layout, and presentation sheet sets.',
+      renderImage: 'design-03-render.jpg',
+      pdfDocument: 'design-03.pdf'
+    },
+    {
+      title: 'PROJ-02 | MODERN VILLA',
+      description: 'Complete architectural drawing package including 3D visualization, BIM modeling, and sheet documentation.',
       renderImage: 'design-02-render.jpg',
       pdfDocument: 'design-02.pdf'
     },
     {
-      title: 'DESIGN-01',
+      title: 'PROJ-01 | RESIDENTIAL',
+      description: 'Full Revit 2025 BIM model with detailed floor plans, sections, and permit sheet presentation.',
       renderImage: 'design-01-render.jpg',
       pdfDocument: 'design-01.pdf'
     }
   ];
 
-  const grid = document.querySelector('[data-project-grid]');
-  if (!grid) return;
-
   const imageFolder = 'assets/projects/images/';
   const pdfFolder = 'assets/projects/pdfs/';
 
-  projects.forEach((project) => {
+  const projectGrid = document.querySelector('[data-project-grid]');
+  if (projectGrid) projects.forEach((project) => {
     const card = document.createElement('article');
     card.className = 'project-card';
 
@@ -44,6 +50,9 @@
     const title = document.createElement('h3');
     title.textContent = project.title;
 
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
     const link = document.createElement('a');
     link.className = 'button button-outline project-link';
     link.href = encodeURI(pdfFolder + project.pdfDocument);
@@ -51,9 +60,39 @@
     link.rel = 'noopener noreferrer';
     link.textContent = 'View Project';
 
-    details.append(title, link);
+    details.append(title, description, link);
     card.append(image, details);
-    grid.append(card);
+    projectGrid.append(card);
+  });
+
+  const featuredGrid = document.querySelector('[data-featured-project-grid]');
+  if (featuredGrid) projects.forEach((project) => {
+    const card = document.createElement('a');
+    card.className = 'feature-card';
+    card.href = 'projects.html';
+
+    const image = document.createElement('img');
+    image.className = 'feature-project-image';
+    image.src = encodeURI(imageFolder + project.renderImage);
+    image.alt = `${project.title} architectural render`;
+    image.loading = 'lazy';
+
+    const details = document.createElement('div');
+    details.className = 'card-copy';
+
+    const title = document.createElement('h3');
+    title.textContent = project.title;
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
+    const linkLabel = document.createElement('span');
+    linkLabel.className = 'card-link';
+    linkLabel.textContent = 'View project';
+
+    details.append(title, description, linkLabel);
+    card.append(image, details);
+    featuredGrid.append(card);
   });
 
 })();
