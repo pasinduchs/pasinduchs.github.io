@@ -10,24 +10,31 @@
 */
 (() => {
   const projects = [
+{
+  title: 'PRJ-04 | AURA RESIDENCE',
+  description: 'Complete BIM documentation package for a two-story modern residence, featuring architectural floor plans, sections, site layout, and presentation sheet sets.',
+  renderImage: 'prj-04-render.jpg',
+  pdfDocument: 'PRJ-4.pdf'
+},
     {
-      title: 'PROJ-03 | MULTI-LEVEL RESIDENCE',
-      description: 'Full Revit 2025 BIM documentation package featuring multi-level floor plans, schematic foundation sections, site layout, and presentation sheet sets.',
-      renderImage: 'design-03-render.jpg',
-      pdfDocument: 'design-03.pdf'
+      title: 'PRJ-03 | TWO-STORY DWELLING',
+      description: 'Complete BIM documentation package featuring detailed architectural floor plans, sections, and permit-ready sheet presentations.',
+      renderImage: 'design-01-render.jpg',
+      pdfDocument: 'PRJ-3.pdf'
     },
     {
-      title: 'PROJ-02 | MODERN VILLA',
-      description: 'Complete architectural drawing package including 3D visualization, BIM modeling, and sheet documentation.',
+      title: 'PRJ-02 | MODERN VILLA',
+      description: 'Modern architectural design package including 3D visualization, BIM modeling, and complete sheet documentation.',
       renderImage: 'design-02-render.jpg',
       pdfDocument: 'design-02.pdf'
     },
     {
-      title: 'PROJ-01 | RESIDENTIAL',
-      description: 'Full Revit 2025 BIM model with detailed floor plans, sections, and permit sheet presentation.',
-      renderImage: 'design-01-render.jpg',
-      pdfDocument: 'design-01.pdf'
+      title: 'PRJ-01 | VERDANT RETREAT',
+      description: 'Coordinated BIM documentation package featuring multi-level floor plans, foundation sections, site layout, and presentation sheet sets.',
+      renderImage: 'design-03-render.jpg',
+      pdfDocument: 'design-03.pdf'
     }
+
   ];
 
   const imageFolder = 'assets/projects/images/';
@@ -66,7 +73,7 @@
   });
 
   const featuredGrid = document.querySelector('[data-featured-project-grid]');
-  if (featuredGrid) projects.forEach((project) => {
+  if (featuredGrid) projects.slice(0, 3).forEach((project) => {
     const card = document.createElement('a');
     card.className = 'feature-card';
     card.href = 'projects.html';
